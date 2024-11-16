@@ -14,7 +14,7 @@ const Courses: React.FC = () => {
     const toggleDarkMode = () => setDarkMode(!darkMode);
 
     return (
-        <div className={`courses-container ${darkMode ? 'dark' : 'light'}`}>
+        <div className={`courses-container ${darkMode ? 'dark-mode' : 'light'}`}>
             
             <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 

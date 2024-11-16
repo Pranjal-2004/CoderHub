@@ -32,7 +32,7 @@ interface QuestionListProps {
 const QuestionListComponent: React.FC<QuestionListProps> = ({ questionsData, handleQuestionClick }) => {
     const [selectedDifficulties, setSelectedDifficulties] = useState<string[]>([]);
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
-
+    
     const handleDifficultyClick = (difficulty: string) => {
         setSelectedDifficulties((prev) =>
             prev.includes(difficulty) ? prev.filter((d) => d !== difficulty) : [...prev, difficulty]

@@ -7,7 +7,7 @@
     align-items: center;
     padding: 10px 20px;
     background-color: white;
-    color: #5A6ACF;
+    color: #C7CEFF;
     height: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -15,7 +15,15 @@
     z-index: 1000;
     transition: background-color 0.3s, color 0.3s;
 }
-
+#buttonContest{
+    transform: translateX(380px);
+    color: #2FBFDE;
+}
+/* #buttonContest.dark-mode{
+    
+    color: #5A6ACF;
+    
+} */
 .container.dark-mode .navbar {
     background-color: #2C2C2C;
     color: #FFFFFF;
@@ -46,11 +54,11 @@
 }
 
 .container.dark-mode .navbar button {
-    color: #C7CEFF;
+    color:#5A6ACF;
 }
 
 .navbar button:hover {
-    color: #2FBFDE;
+    color: #5A6ACF;
 }
 
 .navbar li:hover {

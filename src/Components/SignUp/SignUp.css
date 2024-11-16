@@ -33,19 +33,21 @@
 .signup-right {
     background-color: #C7CEFF;
     margin-left: auto;
-    width: 40%;
+    width: 70%;
+    transform: translateX(185px);
     height: 100vh;
-    transition: background-image 0.3s ease;
-}
-
-.signup-right.creator-hover {
-    background-image: url('../../assets/content.webp');
+    transition: background-image 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .signup-right.creator-hover {
+    background-image: url('src/assets/content.webp');
     background-size: cover;
     background-position: center;
-}
-
-.signup-right.student-hover {
-    background-image: url('../../assets/coder.webp');
+  }
+  
+  .signup-right.student-hover {
+    background-image: url('src/assets/coder.webp');
     background-size: cover;
     background-position: center;
-}
+  }
+  

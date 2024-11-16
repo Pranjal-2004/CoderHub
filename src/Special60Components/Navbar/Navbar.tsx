@@ -13,13 +13,19 @@ const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     return (
         <nav className="navbar">
             <ul>
-                <li><button onClick={() => navigate('/u/:username/home')}>CODER'S HUB</button></li>
-                <li><button onClick={() => navigate('/u/:username/profile')}>Profile</button></li>
+                <li><button onClick={() => navigate('/u/guest/home')}>CODER'S HUB</button></li>
+                <li><button onClick={() => navigate('/u/guest/profile')}>Profile</button></li>
                 <li><button onClick={() => navigate('/question')}>Problems</button></li>
             </ul>
-            <button className="toggle-button" onClick={toggleDarkMode}>
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </button>
+            <button onClick={() => navigate('/u/contest')} id='buttonContest'>Contest</button>
+            <label className="dark-mode-toggle">
+                <input
+                    type="checkbox"
+                    checked={darkMode}
+                    onChange={toggleDarkMode}
+                />
+                <span className="toggle-slider"></span>
+            </label>
         </nav>
     );
 };

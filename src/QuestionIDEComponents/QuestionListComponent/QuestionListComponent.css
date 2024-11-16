@@ -13,8 +13,8 @@ body {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
+    margin-top: 60px;
 }
-
 /* Filter panel styles */
 #questionsListContainer #filterPanel {
     flex: 0 0 250px;
@@ -153,4 +153,91 @@ body {
     #questionsListContainer #questionsList h1 {
         font-size: 24px;
     }
+}
+
+
+
+
+#questionsListContainer.dark {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+/* Filter panel styles */
+#questionsListContainer.light #filterPanel {
+    background-color: white;
+    color: black;
+}
+
+#questionsListContainer.dark #filterPanel {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* Button styles for dark and light modes */
+#questionsListContainer.light #filterPanel button {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+#questionsListContainer.dark #filterPanel button {
+    background-color: #444;
+    color: #f1f1f1;
+    border: 1px solid #666;
+}
+
+#questionsListContainer.dark #filterPanel button:hover {
+    background-color: #555;
+    color: white;
+}
+
+/* Selected button styles */
+#questionsListContainer.light #filterPanel button.selected {
+    background-color: #5A6ACF;
+    color: white;
+}
+
+#questionsListContainer.dark #filterPanel button.selected {
+    background-color: #007ACC;
+    color: white;
+}
+
+/* Questions list styles */
+#questionsListContainer.light #questionsList {
+    background-color: white;
+    color: black;
+}
+
+#questionsListContainer.dark #questionsList {
+    background-color: #2b2b2b;
+    color: #f1f1f1;
+}
+
+/* Link styles */
+#questionsListContainer.light #questionsList a {
+    color: #2FBFDE;
+}
+
+#questionsListContainer.dark #questionsList a {
+    color: #76c7f9;
+}
+
+#questionsListContainer.dark #questionsList a:hover {
+    background-color: #3a3a3a;
+}
+
+/* Toggle button styles */
+#darkModeToggle {
+    background-color: #5A6ACF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#darkModeToggle:hover {
+    background-color: #4a5bcf;
 }

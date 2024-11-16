@@ -151,7 +151,7 @@ const Array: React.FC = () => {
   };
 
   return (
-    <div className={`container ${darkMode ? "dark-mode" : ""}`}>
+    <div className={`topiccontainer ${darkMode ? "dark-mode" : ""}`}>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
       <div className="titleDiv">

@@ -17,7 +17,7 @@
 }
 
 /* Dark mode for main container */
-.courses-container.dark {
+.courses-container.dark-mode{
     background-color: #202020;
     color: #ffffff;
 }
@@ -81,3 +81,7 @@
 .courses-container.light .course-card:hover {
     background-color: #e0e0e0;
 }
+
+/* .Navbar dark{
+   background-color: #202020
+} */
