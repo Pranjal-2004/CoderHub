@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudentLogin.css";
-import { loginWithEmailAndPassword, loginWithGoogle } from "../../firebase/authService";
+import {
+  loginWithEmailAndPassword,
+  loginWithGoogle,
+} from "../../firebase/authService";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+const db = getFirestore();
 
 const StudentLogin: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -15,12 +21,25 @@ const StudentLogin: React.FC = () => {
     try {
       const userCredential = await loginWithEmailAndPassword(email, password);
 
-      const token = await userCredential.getIdToken();
-      localStorage.setItem("authToken", token);
-      document.cookie = `authToken=${token}; path=/; max-age=${60 * 60 * 24}; Secure; SameSite=Strict`;
+      // Fetch user details from Firestore
+      const userDocRef = doc(db, "users", userCredential.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
 
-      console.log("User logged in:", userCredential);
-      navigate("/u/home"); 
+        const token = await userCredential.getIdToken();
+        localStorage.setItem("authToken", token);
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        document.cookie = `authToken=${token}; path=/; max-age=${
+          60 * 60 * 24
+        }; Secure; SameSite=Strict`;
+
+        console.log("User logged in:", userCredential);
+        navigate(`/u/${userData.name}/home`); // Personalized route
+      } else {
+        throw new Error("User details not found in database");
+      }
     } catch (error) {
       setError("Failed to log in. Please check your credentials and try again.");
     }
@@ -30,12 +49,24 @@ const StudentLogin: React.FC = () => {
     try {
       const userCredential = await loginWithGoogle();
 
-      const token = await userCredential.getIdToken();
-      localStorage.setItem("authToken", token);
-      document.cookie = `authToken=${token}; path=/; max-age=${60 * 60 * 24}; Secure; SameSite=Strict`;
+      const userDocRef = doc(db, "users", userCredential.uid);
+      const userDoc = await getDoc(userDocRef);
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
 
-      console.log("User logged in with Google:", userCredential);
-      navigate("/u/home"); 
+        const token = await userCredential.getIdToken();
+        localStorage.setItem("authToken", token);
+        localStorage.setItem("userData", JSON.stringify(userData));
+
+        document.cookie = `authToken=${token}; path=/; max-age=${
+          60 * 60 * 24
+        }; Secure; SameSite=Strict`;
+
+        console.log("User logged in with Google:", userCredential);
+        navigate(`/u/${userData.name}/home`); // Personalized route
+      } else {
+        throw new Error("User details not found in database");
+      }
     } catch (error) {
       setError("Failed to sign in with Google. Please try again.");
     }
@@ -43,8 +74,7 @@ const StudentLogin: React.FC = () => {
 
   return (
     <div className="login-container">
-      <div className="image-section">
-      </div>
+      <div className="image-section"></div>
       <div className="form-section">
         <h2>Welcome Back!</h2>
         <p>Login to your account</p>

@@ -12,6 +12,9 @@ const Navbar: React.FC<NavbarProps> = ({ toggleDarkMode, isDarkMode }) => {
   return (
     <nav className={`navbar ${isDarkMode ? 'dark-mode' : ''}`}>
       <div className="navbar-left">
+      <Link to='/u/guest/home' >
+          CODER'S HUB
+        </Link>
         <Link to='/learning-path' >
           Learning Path
         </Link>

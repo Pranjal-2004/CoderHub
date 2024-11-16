@@ -49,3 +49,13 @@ export const getUserApprovalStatus = async (userId: string): Promise<boolean> =>
     }
   };
 
+  export const fetchUserData = async (userId: string) => {
+    const userDocRef = doc(db, "users", userId);
+    const userDoc = await getDoc(userDocRef);
+    if (userDoc.exists()) {
+      return userDoc.data();
+    } else {
+      throw new Error("User data not found");
+    }
+  };
+  

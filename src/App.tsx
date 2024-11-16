@@ -44,9 +44,9 @@ const App: FC = () => {
         <Route path="/cc/profile" Component={ CCProfile} />
         <Route path="/cc/settings" Component={ CCSettings} />
         <Route path="/cc/contest" Component={ Contest} />
-        <Route path="/u/home" Component={SHome} />
-        <Route path="/u/profile" Component={SProfile} />
-        <Route path="/u/settings" Component={SSettings} />
+        <Route path="/u/:username/home" Component={SHome} />
+        <Route path="/u/:username/profile" Component={SProfile} />
+        <Route path="/u/:username/settings" Component={SSettings} />
         <Route path="/u/contest" Component={SContest} />
         <Route path="/question/*" Component={QuestionPageComponent} />
         <Route path="/learning-path" Component={Courses} />

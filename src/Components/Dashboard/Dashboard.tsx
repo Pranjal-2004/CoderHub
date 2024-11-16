@@ -10,7 +10,7 @@ const Dashboard: FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); 
   // dotenv.config();
 
-  const API_KEY = "AIzaSyBNlU2bmduiRa1JFU6w7-gt_N-g_jHnHxw"; 
+  const API_KEY = "AIzaSyBz5sOg1KYTzXdBJexm4jXFDBYCDqnmzfY"; 
   const handleCodeSubmit = async () => {
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });

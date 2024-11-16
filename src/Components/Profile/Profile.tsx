@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, {  useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
@@ -9,7 +9,6 @@ import {
   Tooltip,
   Legend,
   ChartOptions,
-  Plugin,
 } from "chart.js";
 import "./Profile.css";
 
@@ -37,14 +36,21 @@ type Question = {
 };
 
 export default function Profile() {
-  const [profileData, setProfileData] = useState({
-    username: "Content Creator",
-    tagline: "Creator_Abel",
-    location: "Paris",
-    github: "AbelTesf",
-    interests: "Competitive Coding",
-    avatarUrl: "src/assets/Components/UserComponents/contentc.avif",
+  const [profileData, setProfileData] = useState(() => {
+    // Try to get user data from localStorage
+    const userData = localStorage.getItem('userData');
+    const parsedUserData = userData ? JSON.parse(userData) : null;
+    
+    return {
+      username: parsedUserData?.name || "Default User", // Fallback if userData doesn't exist
+      tagline: "Creator_Abel",
+      location: "Paris",
+      github: "AbelTesf",
+      interests: "Competitive Coding",
+      avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5wC94tdZTI1SJ0ZWFAvx9-YPMtichkDMaSw&s",
+    };
   });
+
 
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState(profileData);
@@ -83,8 +89,8 @@ export default function Profile() {
   const [selectedLevel, setSelectedLevel] = useState<
     "easy" | "medium" | "hard" | "None"
   >("None");
-  const [filterLanguage, setFilterLanguage] = useState<boolean>(false);
-  const [filterLevel, setFilterLevel] = useState<boolean>(false);
+  // const [filterLanguage, setFilterLanguage] = useState<boolean>(false);
+  // const [filterLevel, setFilterLevel] = useState<boolean>(false);
 
   // const getPercentage = (created: number, total: number) =>
   //   (created / total) * 100;

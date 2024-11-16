@@ -1,6 +1,7 @@
-import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import '../styles.css';
+import React from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import "../styles.css";
+
 interface SidebarProps {
   isDarkMode: boolean;
 }
@@ -9,19 +10,25 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Fetch the username from localStorage
+  const username = localStorage.getItem("username") || "Guest";
+
   const handleLogout = () => {
-    // Add your logout logic here
-    navigate('/login');
+    // Clear user session (optional)
+    localStorage.removeItem("username");
+    navigate("/login");
   };
 
   return (
-    <div className={`sidebar ${isDarkMode ? 'dark-mode' : ''}`}>
+    <div className={`sidebar ${isDarkMode ? "dark-mode" : ""}`}>
       <div className="sidebar-content">
         <ul className="sidebar-nav">
           <li>
             <Link
-              to="/u/home"
-              className={`sidebar-link ${location.pathname === '/u/home' ? 'active' : ''}`}
+              to={`/u/${encodeURIComponent(username)}/home`}
+              className={`sidebar-link ${
+                location.pathname === `/u/${encodeURIComponent(username)}/home` ? "active" : ""
+              }`}
             >
               <i className="fas fa-home"></i>
               <span>Home</span>
@@ -29,8 +36,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode }) => {
           </li>
           <li>
             <Link
-              to="/u/profile"
-              className={`sidebar-link ${location.pathname === '/u/profile' ? 'active' : ''}`}
+              to={`/u/${encodeURIComponent(username)}/profile`}
+              className={`sidebar-link ${
+                location.pathname === `/u/${encodeURIComponent(username)}/profile` ? "active" : ""
+              }`}
             >
               <i className="fas fa-user"></i>
               <span>Profile</span>
@@ -38,8 +47,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isDarkMode }) => {
           </li>
           <li>
             <Link
-              to="/u/settings"
-              className={`sidebar-link ${location.pathname === '/u/settings' ? 'active' : ''}`}
+              to={`/u/${encodeURIComponent(username)}/settings`}
+              className={`sidebar-link ${
+                location.pathname === `/u/${encodeURIComponent(username)}/settings` ? "active" : ""
+              }`}
             >
               <i className="fas fa-cog"></i>
               <span>Settings</span>

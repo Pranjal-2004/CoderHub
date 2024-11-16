@@ -36,14 +36,30 @@ type Question = {
 };
 
 export default function Profile() {
+
+  const getLocalStorageUserName = () => {
+    const userData = localStorage.getItem("userData");
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData);
+        return parsedData.name || "Default Username"; // Fallback if `name` is not present
+      } catch (error) {
+        console.error("Error parsing userData from localStorage:", error);
+        return "Default Username"; // Fallback in case of error
+      }
+    }
+    return "Default Username"; // Fallback if `userData` is not in localStorage
+  };
+
+
   const [profileData, setProfileData] = useState({
-    username: "Tom Holland",
+    username: getLocalStorageUserName(),
     tagline: "Whyamicodingbruh",
     location: "Paris",
     github: "TomZend",
     rank: "Rank 724,190",
     interests: "Interested in DSA",
-    avatarUrl: "src/assets/Components/UserComponents/spidey.jpg",
+    avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5wC94tdZTI1SJ0ZWFAvx9-YPMtichkDMaSw&s",
   });
 
   const [isEditing, setIsEditing] = useState(false);

@@ -2,13 +2,22 @@ import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CClogin.css";
 import { loginWithEmailAndPassword, loginWithGoogle } from "../../firebase/authService";
-import { getUserApprovalStatusAndRole } from "../../firebase/firebase.firestore";
+import { getUserApprovalStatusAndRole, fetchUserData } from "../../firebase/firebase.firestore";
 
 const CClogin: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const storeUserData = async (userId: string) => {
+    try {
+      const userData = await fetchUserData(userId); // Assuming this function fetches user data
+      localStorage.setItem("userData", JSON.stringify(userData));
+    } catch (err) {
+      console.error("Failed to fetch user data:", err);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +27,7 @@ const CClogin: FC = () => {
       const userCredential = await loginWithEmailAndPassword(email, password);
       const userId = userCredential.uid;
       const { isApproved, role } = await getUserApprovalStatusAndRole(userId);
-      
+
       if (role !== "creator") {
         setError("You are not authorized as a content creator.");
         return;
@@ -32,6 +41,7 @@ const CClogin: FC = () => {
       localStorage.setItem("authToken", token);
       document.cookie = `authToken=${token}; path=/; max-age=${60 * 60 * 24}; Secure; SameSite=Strict`;
 
+      await storeUserData(userId);
       navigate("/cc/home");
     } catch (error) {
       setError("Failed to log in. Please check your credentials and try again.");
@@ -58,6 +68,7 @@ const CClogin: FC = () => {
       localStorage.setItem("authToken", token);
       document.cookie = `authToken=${token}; path=/; max-age=${60 * 60 * 24}; Secure; SameSite=Strict`;
 
+      await storeUserData(userId);
       navigate("/cc/home");
     } catch (error) {
       setError("Failed to sign in with Google. Please try again.");
@@ -99,8 +110,7 @@ const CClogin: FC = () => {
         </div>
         <p>Don't have an account? <a href="/register/cc">Send Request</a></p>
       </div>
-      <div className="image-section">
-      </div>
+      <div className="image-section"></div>
     </div>
   );
 };
