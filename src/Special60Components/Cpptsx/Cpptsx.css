@@ -1,0 +1,126 @@
+/* Cpptsx.css */
+
+.cpptsx-container {
+    min-width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cpptsx-container.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Title */
+#cpph1 {
+    color: #5A6ACF;
+    margin-bottom: 20px;
+    transition: color 0.3s;
+    margin-top: 80px;
+}
+
+.cpptsx-container.dark-mode #cpph1 {
+    color: #ffffff;
+}
+
+/* Block styles */
+.blocks {
+    width: 100%; 
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.block {
+    width: 900px;
+    padding: 15px 20px;
+    height: 60px;
+    background-color: #f0f0f0; 
+    color: #333333;
+    border-radius: 8px;
+    cursor: pointer;
+    border-top: 1px solid #d0d0d0; 
+    transition: background-color 0.2s, color 0.2s;
+    text-align: left;
+}
+
+.block:first-child {
+    border-top: none; 
+}
+
+.block:hover {
+    background-color: #e0e0e0; 
+}
+
+.cpptsx-container.dark-mode .block {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.cpptsx-container.dark-mode .block:hover {
+    background-color: #444444;
+}
+
+/* Locked block style */
+.block.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+    .navbar ul {
+        gap: 10px;
+    }
+    .navbar {
+        padding: 10px 15px;
+    }
+}
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+}
+.block {
+    position: relative;
+    cursor: pointer;
+}
+
+.block.disabled {
+    cursor: not-allowed;
+    color: #aaa;
+}
+
+/* Tooltip styling */
+.block.disabled:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%; /* Position above the element */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Hidden tooltip by default */
+.block.disabled::after {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+

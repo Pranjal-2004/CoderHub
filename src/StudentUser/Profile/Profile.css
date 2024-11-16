@@ -1,0 +1,535 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #C7CEFF;
+  --primary-dark: #5A6ACF;
+  --tertiary: #2FBFDE;
+  --background-light: #F4F7FB;
+  --text-dark: #333;
+  --text-light: #fff;
+  --highlight: #FFCF56;
+  --border-color: #E1E4E8;
+  --dark-mode-bg: #333;
+  --dark-mode-text: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background-color: var(--background-light);
+  overflow-x: hidden;
+  color: var(--text-dark);
+}
+
+.profile-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  background-color: var(--primary);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.profile-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--tertiary) 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--text-light);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  min-width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info h2 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+/* Cards Styling */
+.active-days-card,
+.stats-card,
+.questions-card,
+.badge-card,
+.community-stats-card,
+.languages-skills-card {
+  background-color: var(--text-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  color: var(--text-dark);
+}
+.badge-card,
+.community-stats-card,
+.languages-skills-card {
+  padding: 1rem;
+}
+/* Right Section Cards Styling */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Badge Card Spacing */
+.badge-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* Adjusted for proper spacing */
+}
+
+.badge-card span {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+.badges-container {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+.languages-skills-card {
+  background-color: var(--text-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: auto; /* Pushes the card to the right */
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skills-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.skills-header .skills-count {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Adjust input and button alignment in the card */
+.add-skill-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skill-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.skill-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.skill-button:hover {
+  background-color: var(--tertiary);
+}
+
+.badge {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Active Days Grid */
+.active-days-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.month {
+  text-align: center;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.day-box {
+  width: 16px;
+  height: 16px;
+  background-color: var(--primary-dark);
+  border-radius: 4px;
+}
+
+.day-box.active {
+  background-color: var(--tertiary);
+}
+
+.day-box:hover::after {
+  content: attr(title);
+  position: absolute;
+  background-color: var(--text-dark);
+  color: var(--text-light);
+  padding: 0.25rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1;
+}
+
+/* Question Stats */
+.question-stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.stat-item {
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.stat-item .value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 0.25rem;
+}
+
+.stat-item.easy .value {
+  color: #FFCF56;
+}
+
+.stat-item.medium .value {
+  color: #5A6ACF;
+}
+
+.stat-item.hard .value {
+  color: #2FBFDE;
+}
+
+/* Filter Controls */
+.questions-card .filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+.filter-dropdown {
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.filter select {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  background-color: var(--primary);
+}
+
+.apply-button {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  border: none;
+  padding: 0rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+  background-color: var(--tertiary);
+}
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.question-item {
+  background-color: var(--primary);
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.questions-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.questions-scroll ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.questions-scroll li {
+  background-color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Solved Questions Styling */
+.solved-questions-list {
+  background-color: var(--primary);
+  padding: 1rem;
+  border-radius: 8px;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.solved-questions-list .question-item {
+  background-color: var(--primary);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+/* Edit Button and Input */
+.edit-button {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: var(--dark-mode-bg);
+  color: var(--dark-mode-text);
+}
+
+.dark-mode .profile-container,
+.dark-mode .active-days-card,
+.dark-mode .stats-card,
+.dark-mode .questions-card,
+.dark-mode .badge-card,
+.dark-mode .community-stats-card,
+.dark-mode .languages-skills-card {
+  background-color: var(--dark-mode-bg);
+  color: var(--dark-mode-text);
+}
+
+.dark-mode .questions-scroll li {
+  background-color: var(--dark-mode-bg);
+  border-color: var(--primary-dark);
+}
+
+.dark-mode .stat-item .value {
+  color: var(--highlight);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr;
+    width: 98%;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+  /* Responsive adjustments for the right section */
+@media (max-width: 768px) {
+  .right-section {
+    gap: 1rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .questions-card .filter-controls {
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .questions-card {
+    max-height: 60vh;
+  }
+}
+.stats-content {
+  margin-top: 0.75rem;
+}
+
+.stats-content p {
+  margin-bottom: 0.5rem;
+}
+
+.skills-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+.skills-list li {
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+}
+/* Add these styles to your existing CSS file */
+
+.add-skill-form {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.skill-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.skill-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.skill-button:hover {
+  background-color: var(--tertiary);
+}
+
+.skill-button.cancel {
+  background-color: #dc3545;
+}
+
+.skill-button.cancel:hover {
+  background-color: #c82333;
+}
+
+.skill-button.edit {
+  background-color: var(--tertiary);
+}
+
+.skill-button.delete {
+  background-color: #dc3545;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.skill-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.skill-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-skill-form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Dark mode support */
+.dark-mode .skill-item {
+  background-color: var(--dark-mode-bg);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .skill-content {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .skill-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .edit-skill-form {
+    flex-direction: column;
+  }
+  
+  .skill-button {
+    width: 100%;
+  }
+}

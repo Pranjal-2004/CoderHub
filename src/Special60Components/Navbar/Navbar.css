@@ -1,0 +1,79 @@
+/* Navbar styling */
+.navbar {
+    width: 100%;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    color: #5A6ACF;
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container.dark-mode .navbar {
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+}
+
+.navbar li {
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar button {
+    background: none;
+    border: none;
+    color: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.container.dark-mode .navbar button {
+    color: #C7CEFF;
+}
+
+.navbar button:hover {
+    color: #2FBFDE;
+}
+
+.navbar li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Toggle button styling */
+.toggle-button {
+    background-color: #5A6ACF;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 50px;
+}
+
+.toggle-button:hover {
+    background-color: #4a5ab0;
+}
+
+.container.dark-mode .toggle-button {
+    background-color: #2FBFDE;
+}

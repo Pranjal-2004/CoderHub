@@ -1,0 +1,38 @@
+:root{
+    padding: 0;
+    margin: 0px;
+    /* overflow-y: hidden; */
+}
+.header{
+    display: flex;
+    align-items: center;
+    background-color: #C7CEFF;
+}
+
+.link{
+    text-decoration: none;
+    color: #5A6ACF;
+}
+.header h1{
+    margin-left: 30px;
+    font-size: 2.5rem;
+}
+.authbtn{
+    margin-left: auto;
+    margin-right: 30px;
+}
+.authbtn button{
+    padding: 5px;
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #5A6ACF;
+    border-radius: 10px;
+    color: #5A6ACF;
+    font-size: 15px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.authbtn button:hover{
+    background-color: #c1c1c1;
+}
